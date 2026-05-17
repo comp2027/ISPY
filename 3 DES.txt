@@ -46,3 +46,7 @@ left = new_left
 
 plain = left + right
 print("Decrypted Message:", plain)
+
+#output
+#Enter 8-bit Message: 10101010
+#Enter 8-bit Key: 11110000
