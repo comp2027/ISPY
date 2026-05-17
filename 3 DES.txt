@@ -1,0 +1,48 @@
+msg = input("Enter 8-bit Message: ")
+key = input("Enter 8-bit Key: ")
+
+left = msg[:4]
+right = msg[4:]
+
+k1 = key[:4]
+k2 = key[4:]
+
+def xor(a, b):
+    ans = ""
+    for i in range(len(a)):
+        ans += str(int(a[i]) ^ int(b[i]))
+    return ans
+
+# Encryption Round 1
+f1 = xor(right, k1)
+new_right = xor(left, f1)
+left = right
+right = new_right
+
+# Encryption Round 2
+f2 = xor(right, k2)
+new_right = xor(left, f2)
+left = right
+right = new_right
+
+cipher = left + right
+print("Encrypted Message:", cipher)
+
+# Decryption
+left = cipher[:4]
+right = cipher[4:]
+
+# Reverse Round 2
+f2 = xor(left, k2)
+new_left = xor(right, f2)
+right = left
+left = new_left
+
+# Reverse Round 1
+f1 = xor(left, k1)
+new_left = xor(right, f1)
+right = left
+left = new_left
+
+plain = left + right
+print("Decrypted Message:", plain)

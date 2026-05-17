@@ -1,0 +1,25 @@
+p = int(input("Enter p: "))
+q = int(input("Enter q: "))
+msg = int(input("Enter Message: "))
+
+n = p * q
+e = 2
+phi = (p - 1) * (q - 1)
+
+while e < phi:
+    if phi % e != 0:
+        break
+    e += 1
+
+d = 1
+
+while (d * e) % phi != 1:
+    d += 1
+
+c = (msg ** e) % n
+
+print("Encrypted Message:", c)
+
+m = (c ** d) % n
+
+print("Decrypted Message:", m)

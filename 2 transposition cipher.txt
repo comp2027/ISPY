@@ -1,0 +1,22 @@
+msg = input("Enter Message: ")
+key = int(input("Enter Key: "))
+
+# Encryption
+enc = ""
+
+for i in range(key):
+    for j in range(i, len(msg), key):
+        enc += msg[j]
+
+print("Encrypted Message:", enc)
+
+# Decryption
+dec = [''] * len(msg)
+
+k = 0
+for i in range(key):
+    for j in range(i, len(msg), key):
+        dec[j] = enc[k]
+        k += 1
+
+print("Decrypted Message:", "".join(dec))

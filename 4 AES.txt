@@ -1,0 +1,16 @@
+msg = input("Enter Message: ")
+key = int(input("Enter Numeric Key: "))
+
+enc = ""
+
+for i in msg:
+    enc += chr(ord(i) + key)
+
+print("Encrypted Message:", enc)
+
+dec = ""
+
+for i in enc:
+    dec += chr(ord(i) - key)
+
+print("Decrypted Message:", dec)
