@@ -1,4 +1,6 @@
-s = input("Enter String: ")
+s = input("Enter String: ") 
+# hello world
+
 
 print("AND Operation:")
 for i in s:
