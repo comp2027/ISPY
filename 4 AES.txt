@@ -14,3 +14,6 @@ for i in enc:
     dec += chr(ord(i) - key)
 
 print("Decrypted Message:", dec)
+
+#Enter Message: Hello
+#Enter Numeric Key: 3
