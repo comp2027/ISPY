@@ -23,3 +23,7 @@ print("Encrypted Message:", c)
 m = (c ** d) % n
 
 print("Decrypted Message:", m)
+
+#Enter p: 3
+#Enter q: 11
+#Enter Message: 5
