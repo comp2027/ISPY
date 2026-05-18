@@ -1,0 +1,56 @@
+# pip install pycryptodome
+
+from Crypto.Cipher import DES
+from Crypto.Util.Padding import pad, unpad
+from Crypto.Random import get_random_bytes
+import base64
+
+# Input
+plain_text = input("Enter Plain Text: ")
+
+# Generate 8-byte DES key
+key = get_random_bytes(8)
+
+# Create DES cipher
+cipher = DES.new(key, DES.MODE_ECB)
+
+
+print("DATA ENCRYPTION STANDARD (DES)")
+
+
+print("\n[64-bit Plaintext]")
+print(plain_text)
+
+print("\n--> Initial Permutation Applied")
+
+print("\nLeft Plain Text (32-bit)")
+print("(Simulated Left Half)")
+
+print("\nRight Plain Text (32-bit)")
+print("(Simulated Right Half)")
+
+print("\n--- 16 Rounds Processing ---")
+for i in range(1, 17):
+    print(f"Round {i} using Subkey K{i}")
+
+print("\n--> Final Permutation Applied")
+
+# Encryption
+padded_text = pad(plain_text.encode(), DES.block_size)
+encrypted_bytes = cipher.encrypt(padded_text)
+
+# Convert to Base64
+encrypted_text = base64.b64encode(encrypted_bytes).decode()
+
+print("\n[64-bit Ciphertext]")
+print(encrypted_text)
+
+
+print("Decryption Process")
+
+# Decryption
+decrypted_bytes = cipher.decrypt(base64.b64decode(encrypted_text))
+decrypted_text = unpad(decrypted_bytes, DES.block_size).decode()
+
+print("\nRecovered Plaintext:")
+print(decrypted_text)
