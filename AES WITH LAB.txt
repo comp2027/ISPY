@@ -1,0 +1,27 @@
+# pip install pycryptodome
+
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad, unpad
+import base64
+
+# Input
+msg = input("Enter Message: ")
+
+# 16-byte key for AES-128
+key = b'abcdefghijklmnop'
+
+# Create AES cipher
+cipher = AES.new(key, AES.MODE_ECB)
+
+# Encryption
+encrypted = cipher.encrypt(pad(msg.encode(), AES.block_size))
+
+# Convert to readable format
+enc_text = base64.b64encode(encrypted).decode()
+
+print("Encrypted Message:", enc_text)
+
+# Decryption
+decrypted = unpad(cipher.decrypt(base64.b64decode(enc_text)), AES.block_size)
+
+print("Decrypted Message:", decrypted.decode())
